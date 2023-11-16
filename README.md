@@ -4,9 +4,14 @@ A simple script utilizing ExtremeCooling4Linux for Lenovo Ideapad 15ARH05
 Tested on Arch Linux
 # Configuration and Usage
 ```
-./temperaturecheck.sh <seconds> <temperature_in_celsius>
+./temperaturecheck.sh <temperature_in_celsius> <seconds> 
 ```
-
+As a Daemon:
+Edit the line `ExecStart=/opt/lenovo-temperature-check/temperaturecheck.sh` in lenovo-temperature-check.service and pass on the `<temperature_in_celsius> <seconds>`
+Example:
+```
+`ExecStart=/opt/lenovo-temperature-check/temperaturecheck.sh 80 1
+```
 # Depends on package
   bc [Comparisons inside the bash file]
   
@@ -16,7 +21,7 @@ Tested on Arch Linux
   
   extremecooling4linux (AUR) [Set Fan Speed to Maximum]
   
-## Installation
+## Installation as a Daemon
   Make Folder /opt/lenovo-temperature-check
   
   Move temperaturecheck.sh to /opt/lenovo-temperature-check
