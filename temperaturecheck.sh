@@ -1,10 +1,12 @@
 #!/bin/bash
+
      if [[ -z "$1" ]]; then
         echo "Empty Parameter, Defaulting to 1 second checks"
         SLEEP=1
     else
         SLEEP=$1
     fi
+TEMP_TARGET=$2
 echo "Starting the Program, will do checks in 5 seconds"
 sleep 5
 while true; do
@@ -12,7 +14,7 @@ while true; do
 
     echo Lenovo Extreme Cooling
 
-    if (( $(echo "$TEMP >= 80" | bc -l) )); then
+    if (( $(echo "$TEMP >= $TEMP_TARGET" | bc -l) )); then
         ec4Linux enable
         echo Enabling ExtremeCooling4Linux
     else
