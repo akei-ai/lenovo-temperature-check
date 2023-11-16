@@ -1,7 +1,12 @@
-# lenovo-temperature-check
+## lenovo-temperature-check
 A simple script utilizing ExtremeCooling4Linux for Lenovo Ideapad 15ARH05
 
 Tested on Arch Linux
+# Configuration and Usage
+```
+./temperaturecheck.sh <seconds> <temperature_in_celsius>
+```
+
 # Depends on package
   bc [Comparisons inside the bash file]
   
@@ -11,7 +16,7 @@ Tested on Arch Linux
   
   extremecooling4linux (AUR) [Set Fan Speed to Maximum]
   
-# Installation
+## Installation
   Make Folder /opt/lenovo-temperature-check
   
   Move temperaturecheck.sh to /opt/lenovo-temperature-check
