@@ -7,10 +7,12 @@ Tested on Arch Linux
 ./temperaturecheck.sh <temperature_in_celsius> <seconds> 
 ```
 As a Daemon:
+
 Edit the line `ExecStart=/opt/lenovo-temperature-check/temperaturecheck.sh` in lenovo-temperature-check.service and pass on the `<temperature_in_celsius> <seconds>`
+
 Example:
 ```
-`ExecStart=/opt/lenovo-temperature-check/temperaturecheck.sh 80 1
+ExecStart=/opt/lenovo-temperature-check/temperaturecheck.sh 80 1
 ```
 # Depends on package
   bc [Comparisons inside the bash file]
