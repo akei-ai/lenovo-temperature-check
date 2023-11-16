@@ -1,0 +1,12 @@
+[Unit]
+Description=Lenovo Temperature Check - Automatic Fan Adjustment for Lenovo Devices with improper temperature and fan curve controls on Linux
+After=network.target network-online.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/opt/lenovo-temperature-check/temperaturecheck.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
