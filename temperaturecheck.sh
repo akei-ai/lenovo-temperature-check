@@ -15,11 +15,14 @@
 
 echo "Starting the Program, will do checks in 5 seconds"
 sleep 5
+
+
 while true; do
-    TEMP=$(sensors k10temp-pci-00c3 -j | jq .[].Tctl.temp1_input)
-
+    TEMP_CPU=$(sensors k10temp-pci-00c3 -j | jq .[].Tctl.temp1_input)
+    TEMP_IGPU=$(sensors amdgpu-pci-0600 -j | jq .[].edge.temp1_input)
+    TEMP=$(math "($TEMP_CPU + $TEMP_IGPU)/2")
+    
     echo Lenovo Extreme Cooling
-
     if (( $(echo "$TEMP >= $TEMP_TARGET" | bc -l) )); then
         ec4Linux enable > /dev/null
         echo Enabling ExtremeCooling4Linux
@@ -27,7 +30,7 @@ while true; do
         ec4Linux disable
         echo Disable ExtremeCooling4Linux
     fi
-    echo Temperature of Tctl is : "$TEMP"
+    echo Temperature Average is : "$TEMP"
    
     
     sleep "$SLEEP"
