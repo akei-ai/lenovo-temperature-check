@@ -31,7 +31,8 @@ while true; do
         echo Disable ExtremeCooling4Linux
     fi
     echo Temperature Average is : "$TEMP"
-   
+    echo Tctl : "$TEMP_CPU"
+    echo edge : "$TEMP_IGPU"
     
     sleep "$SLEEP"
 done
