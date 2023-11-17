@@ -20,7 +20,7 @@ sleep 5
 while true; do
     TEMP_CPU=$(sensors k10temp-pci-00c3 -j | jq .[].Tctl.temp1_input)
     TEMP_IGPU=$(sensors amdgpu-pci-0600 -j | jq .[].edge.temp1_input)
-    TEMP=$(math "($TEMP_CPU + $TEMP_IGPU)/2")
+    TEMP=$(echo "$TEMP_CPU + $TEMP_IGPU/2"| bc -l)
     
     echo Lenovo Extreme Cooling
     if (( $(echo "$TEMP >= $TEMP_TARGET" | bc -l) )); then
