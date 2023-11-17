@@ -3,7 +3,7 @@
         echo "Empty Parameter for Temperature, Defaulting to 80C "
         TEMP_TARGET=80
     else
-        TEMP_TARGET=$2
+        TEMP_TARGET=$1
     fi
 
     if [[ -z "$2" ]]; then
